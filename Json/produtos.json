@@ -1,0 +1,40 @@
+[
+  {
+    "id": "176c3694-f403-47d7-848c-7152ba4950d6",
+    "codigo": "50",
+    "nome": "b9d3b74e-c97c-4029-bff3-aa5d051010f5",
+    "precoUnitario": 178
+  },
+  {
+    "id": "176c3694-f403-47d7-848c-7152ba4950d6",
+    "codigo": "12",
+    "nome": "iPhone 11 Apple com 128GB, Tela Retina HD de 6,1”, iOS 13, Dupla Câmera Traseira de 12 MP, Resistente à Água e Bateria de Longa Duração - Branco",
+    "precoUnitario": 4699,
+    "imagemUrl": "https://images-submarino.b2w.io/produtos/01/00/img/1611324/8/1611324805_1SZ.jpg"
+  },
+  {
+    "id": "176c3694-f403-47d7-848c-7152ba4950d6",
+    "codigo": "35",
+    "nome": "Monitor Widescreen LCD LED 18.5” AOC HD E970SWNL",
+    "precoUnitario": 444.9
+  },
+  {
+    "id": "a2f49077-99d2-4a16-89f1-83315d73468b",
+    "codigo": "312800A",
+    "nome": "Fogão 3 Bocas 1 Dupla Cristalaço Industrial Baixa Pressão",
+    "precoUnitario": 718.08
+  },
+  {
+    "id": "c363bddf-18a5-48e9-a874-5bd178e09198",
+    "codigo": "478ZB",
+    "nome": "Fone de Ouvido Apple AirPods 2 com Estojo de Recarga",
+    "precoUnitario": 1099
+  },
+  {
+    "id": "fc845cba-cf11-42bc-9506-acfa04c5c935",
+    "codigo": "114523KL",
+    "nome": "Galaxy S20 Ultra Cosmic Gray 128GB",
+    "precoUnitario": 6029.1,
+    "imagemUrl": "https://images-submarino.b2w.io/produtos/01/00/img/1521500/7/1521500721_1SZ.jpg"
+  }
+]
