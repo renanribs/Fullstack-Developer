@@ -23,7 +23,7 @@ O usuário após logar no sistema selecionará a opção "Novo Pedido" para inic
 * O sistema é composto por 3 microserviços: Serviço Web (Angular) + Serviço Api  (Spring Boot) + Serviço de Cálculo de Frete (Spring Boot).
 * Banco de dados - NoSQL (MongoDB) ou SQL (PostgreSQL)
 * Tela de listagem dos pedidos
-* Todas as informações (JSONs e Pedidos) precisam ser persistidos no banco de dados escolhido.
+* Todas as informações precisam ser persistidas no banco de dados escolhido.
 * Documento descrevendo o processo de instalação do sistema
 * O fluxo de autenticação é opcional, o mesmo poderá ser mockado para andamento do projeto.
 * O Sistema deverá implementar o fluxo baseado nos arquivos de Design listados no item **Arquivos**
