@@ -19,14 +19,18 @@ O usuário após logar no sistema selecionará a opção "Novo Pedido" para inic
 
 ## Seguem os requisitos:
 
-* A stack de tecnologia a ser utilizada é Java (ou Kotlin) + Angular 6 ou Superior + Spring Boot (com Gradle ou Maven).
-* O sistema é composto por 3 microserviços: Serviço Web (Angular) + Serviço Api  (Spring Boot) + Serviço de Cálculo de Frete (Spring Boot).
+* A stack de tecnologia a ser utilizada é Java (ou Kotlin) + Angular 6 ou Superior + Spring Boot (com Gradle ou Maven)
+* O sistema é composto por 3 microsserviços: Serviço Web (Angular) + Serviço Api  (Spring Boot) + Serviço de Cálculo de Frete (Spring Boot)
 * Banco de dados - NoSQL (MongoDB) ou SQL (PostgreSQL)
+* Um dos microsserviços precisa consumir os endpoints de Cliente e Produtos e popular os dados no banco de dados. Vide seção [API com os Clientes e Produtos](#api-com-os-clientes-e-produtos)
 * Tela de listagem dos pedidos
-* Todas as informações precisam ser persistidas no banco de dados escolhido.
+* Todas as informações precisam ser persistidas no banco de dados escolhido
 * Documento descrevendo o processo de instalação do sistema
-* O fluxo de autenticação é opcional, o mesmo poderá ser mockado para andamento do projeto.
-* O Sistema deverá implementar o fluxo baseado nos arquivos de Design listados no item **Arquivos**
+* O fluxo de autenticação é opcional, o mesmo poderá ser mockado para andamento do projeto
+* O Sistema deverá implementar o fluxo baseado nos arquivos de Design listados no item [Arquivos](#arquivos)
+
+## API com os Clientes e Produtos
+A lista de clientes e de produtos está disponível via API. A documentação da API está no [Apiary](https://maximatech.docs.apiary.io/#reference/0/fullstack/)
 
 ## Microserviço de Cálculo de Frete
 O microserviço de cálculo de frete terá um webservice que  receberá a quantidade de itens que foram selecionados e multiplicará por um valor aleatório entre R$5,00 e R$10,00. Retornando assim o valor calculado.
@@ -43,11 +47,7 @@ Foram selecionados 2 itens do Produto A e 1 item do Produto B, logo teremos 3 it
 * Escrita de testes
 
 ## Arquivos
-
-**GET Request -> Dados do Cliente e Produtos**
-
-	Os JSONs utilizados nessa avaliação estão hospedados e você pode ver mais informações pelo link [https://maximatech.docs.apiary.io](https://maximatech.docs.apiary.io).
-  
+ 
 **Design Mockup**
 
 	URL : https://bit.ly/2P0cw5l
