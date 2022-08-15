@@ -8,62 +8,79 @@ namespace AppApi.Crontroller
     [ApiController]
     public class ProdutoController : ControllerBase
     {
-        private readonly IAppApi _repo;
-        public ProdutoController(IAppApi repo)
-        {
-            _repo = repo;
-        }
+        private IProdutoRepository _produtoRepository;
 
+        public ProdutoController(IProdutoRepository produtoRepository)
+        {
+            this._produtoRepository = produtoRepository;
+        }
 
         [HttpGet]
-        public async Task<IActionResult> GetTask()
+        public async Task<IActionResult> Listar()
         {
             try
             {
-                var resultado = await _repo.GetTodosProdutosAsync();
-                return Ok(resultado);
+                return Ok(await _produtoRepository.Listar());
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro ao conectar no banco de dados!");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
             }
         }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetTask(int id)
-        {
-            try
-            {
-                var resultado = await _repo.GetProdutosAsyncPorID(id);
-                return Ok(resultado);
-            }
-            catch (System.Exception)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro ao conectar");
-            }
-        }
-
 
         [HttpPost]
-        public async Task<IActionResult> Post(Produto model)
+        public async Task<IActionResult> Inserir([FromBody] Produto Produto)
         {
             try
             {
-                _repo.Add(model);
-
-                if (await _repo.SaveChangesAsync())
-                {
-                    return Created($"/api/produto/{model.Id}", model);
-                }
+                await _produtoRepository.Inserir(Produto);
+                return Created(Produto.Id, Produto);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
+            }
+        }
 
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro ao conectar");
+        [HttpPut("{Id}")]
+        public IActionResult Editar(string Id, [FromBody] Produto Produto)
+        {
+            try
+            {
+                Produto.Id = Id;
+                if (_produtoRepository.Obter(Produto.Id) == null)
+                {
+                    return NotFound();
+                }
+                _produtoRepository.Editar(Produto);
+                return Created(Produto.Id, Produto);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
             }
 
-            return BadRequest();
         }
+
+        [HttpDelete("{Id}")]
+        public IActionResult Excluir(string Id, [FromBody] Produto Produto)
+        {
+            try
+            {
+                Produto.Id = Id;
+                if (_produtoRepository.Obter(Id) == null)
+                {
+                    return NotFound();
+                }
+                _produtoRepository.Excluir(Produto);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
+            }
+        }
+
 
     }
 }

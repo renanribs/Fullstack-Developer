@@ -9,49 +9,74 @@ namespace AppApi.Crontroller
 
     public class ClienteController : ControllerBase
     {
-        private readonly IAppApi _repo;
-        public ClienteController(IAppApi repo)
+        private IClienteRepository _clienteRepository;
+
+        public ClienteController(IClienteRepository clienteRepository)
         {
-            _repo = repo;
+            this._clienteRepository = clienteRepository;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Listar()
+        {
+            try { return Ok(await _clienteRepository.Listar());
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Inserir([FromBody] Cliente Cliente)
         {
             try
             {
-                var resultado = await _repo.GetTodosClientesAsync();
-                return Ok(resultado);
+                await _clienteRepository.Inserir(Cliente);
+                return Created(Cliente.Id, Cliente);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro ao conectar");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
             }
+        }
 
+        [HttpPut("{Id}")]
+        public IActionResult Editar(string Id, [FromBody] Cliente Cliente)
+        {
+            try {
+                Cliente.Id = Id;
+                if (_clienteRepository.Obter(Cliente.Id) == null)
+                {
+                    return NotFound();
+                }
+                _clienteRepository.Editar(Cliente);
+                return Created(Cliente.Id, Cliente);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
+            }
 
         }
 
-        // POST api/values
-        [HttpPost]
-        public async Task<IActionResult> Post(Cliente model)
+        [HttpDelete("{Id}")]
+        public IActionResult Excluir(string Id, [FromBody] Cliente Cliente)
         {
             try
             {
-                _repo.Add(model);
-
-                if (await _repo.SaveChangesAsync())
+                Cliente.Id = Id;
+                if (_clienteRepository.Obter(Id) == null)
                 {
-                    return Created($"/api/cliente/{model.ClienteId}", model);
+                    return NotFound();
                 }
+                _clienteRepository.Excluir(Cliente);
+                return Ok();
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro ao conectar");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
             }
-
-            return BadRequest();
         }
 
 

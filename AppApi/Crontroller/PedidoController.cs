@@ -8,48 +8,78 @@ namespace AppApi.Crontroller
     [ApiController]
     public class PedidoController : ControllerBase
     {
-        private readonly IAppApi _repo;
-        public PedidoController(IAppApi repo)
+        private IPedidoRepository _pedidoRepository;
+
+        public PedidoController(IPedidoRepository pedidoRepository)
         {
-            _repo = repo;
+            this._pedidoRepository = pedidoRepository;
         }
-
-
 
         [HttpGet]
-        public async Task<IActionResult> GetTask()
+        public async Task<IActionResult> Listar()
         {
             try
             {
-                var resultado = await _repo.GetTodosPedidosAsync();
-                return Ok(resultado);
+                return Ok(await _pedidoRepository.Listar());
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha ao conectar");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
             }
         }
-
 
         [HttpPost]
-        public async Task<IActionResult> Post(Pedido model)
+        public async Task<IActionResult> Inserir([FromBody] Pedido Pedido)
         {
             try
             {
-                _repo.Add(model);
-
-                if (await _repo.SaveChangesAsync())
-                {
-                    return Created($"/api/pedido/{model.PedidoId}", model);
-                }
+                await _pedidoRepository.Incluir(Pedido);
+                return Created(Pedido.Id, Pedido);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
+            }
+        }
 
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha ao conectar");
+        [HttpPut("{Id}")]
+        public IActionResult Editar(string Id, [FromBody] Pedido Pedido)
+        {
+            try
+            {
+                Pedido.Id = Id;
+                if (_pedidoRepository.Obter(Pedido.Id) == null)
+                {
+                    return NotFound();
+                }
+                _pedidoRepository.Editar(Pedido);
+                return Created(Pedido.Id, Pedido);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
             }
 
-            return BadRequest();
         }
+
+        [HttpDelete("{Id}")]
+        public IActionResult Excluir(string Id, [FromBody] Pedido Pedido)
+        {
+            try
+            {
+                Pedido.Id = Id;
+                if (_pedidoRepository.Obter(Id) == null)
+                {
+                    return NotFound();
+                }
+                _pedidoRepository.Excluir(Pedido);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha");
+            }
+        }
+
     }
 }

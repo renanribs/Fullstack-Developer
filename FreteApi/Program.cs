@@ -5,10 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<ICalculaFrete, CalculaFrete>();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
@@ -20,13 +18,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
 app.UseCors(MyAllowSpecificOrigins);
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

@@ -146,3 +146,9 @@ C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\obj\Debug\net6.0\r
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\obj\Debug\net6.0\AppApi.pdb
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\obj\Debug\net6.0\AppApi.genruntimeconfig.cache
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\obj\Debug\net6.0\ref\AppApi.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\bin\Debug\net6.0\Dapper.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\AppApi\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
