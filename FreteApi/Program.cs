@@ -1,22 +1,32 @@
+using FreteApi.Services;
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddControllers();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped<ICalculaFrete, CalculaFrete>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:4200");
+                          
+                      });
+});
 
 var app = builder.Build();
 
-app.UseSwagger();
+app.UseCors(MyAllowSpecificOrigins);
 
+app.UseHttpsRedirection();
 
-app.MapPost("/CalculaFrete/{QtdeItem}",  (int QtdeItem) =>
-{
-    Random random = new Random();
-    var valorFrete = random.Next(5, 11);
-    var valorTotalFrete = valorFrete  * QtdeItem;
-    return valorTotalFrete;
-});
+app.UseAuthorization();
 
-app.UseSwaggerUI();
+app.MapControllers();
+
 app.Run();
