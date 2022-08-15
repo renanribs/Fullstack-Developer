@@ -1,0 +1,103 @@
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+  <h4>
+    <img
+      src="../../assets/icone-cliente.png"
+      alt="Cliente"
+      [style.width.PX]="20"
+      [style.height.PX]="20"
+    />
+    Cliente
+  </h4>
+  <div class="form-inline">
+    <div class="pesquisa">
+      <input
+        type="search"
+        size="80"
+        class="form-control ds-input"
+        id="cliente"
+        placeholder="Informe um cliente*"
+        data-docs-version="4.1"
+        spellcheck="false"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded="false"
+        aria-owns="algolia-autocomplete-listbox-0"
+        dir="auto"
+        style="position: relative; vertical-align: top"
+      />
+    </div>
+  </div>
+</div>
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+  <div class="form-inline">
+    <h4>
+      <img
+        src="../../assets/icone-carrinho.png"
+        alt="Carrinho"
+        [style.width.PX]="20"
+        [style.height.PX]="20"
+      />
+      Carrinho
+    </h4>
+  </div>
+  <div class="form-inline">
+    <div class="form-group mb-3">
+      <input
+        type="search"
+        size="70"
+        class="form-control ds-input"
+        id="produto"
+        placeholder="Informe um produto"
+      />
+    </div>
+  </div>
+  <br />
+  <h3 style="text-align: center; color: rgba(126, 126, 126, 0.644)">
+    <img
+      src="../../assets/imagem-carrinho-empty-state.png"
+      alt="Carrinho"
+      [style.width.PX]="180"
+      [style.height.PX]="180"
+    />
+    <br />Carrinho vazio
+  </h3>
+  <h5 style="text-align: center; color: rgba(107, 107, 107, 0.644)">
+    Nenhum produto foi inserido
+  </h5>
+</div>
+<div p-3 bg-white rounded shadow-sm>
+  <div class="card shadow-lg">
+    <div class="card-body row">
+      <h4>
+        <img
+          src="../../assets/icone-total.png"
+          alt=""
+          [style.width.PX]="20"
+          [style.height.PX]="20"
+        />
+        Total
+      </h4>
+      <div class="col-6">
+        <label class="col-6 text-left">Itens </label>
+        <label class="col-6 text-right">R$ 0,00</label>
+        <label class="col-6 text-left">Frete </label>
+        <label class="col-6 text-right">R$ 0,00</label>
+        <hr class="hr" />
+        <label class="col-6 text-left">Total</label>
+        <label class="col-6 text-right">R$ 0,00</label>
+      </div>
+      <div class="col-6">
+        <button type="button" class="btn btn-success col-12">
+          Finalizar Pedido
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-secondary col-12"
+          style="margin-top: 1em"
+        >
+          Limpar carrinho
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
