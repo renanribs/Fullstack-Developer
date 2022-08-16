@@ -251,9 +251,13 @@ C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\FreteApi.runtimeconfig.json
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\FreteApi.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\FreteApi.pdb
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Dapper.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Humanizer.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\MessagePack.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\MessagePack.Annotations.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.Build.Locator.dll
@@ -278,6 +282,8 @@ C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.VisualStudio.Debugger.Contracts.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\FreteApi\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.dll

@@ -19,7 +19,9 @@ namespace AppApi.Crontroller
         [HttpGet]
         public async Task<IActionResult> Listar()
         {
-            try { return Ok(await _clienteRepository.Listar());
+            try
+            {
+                return Ok(await _clienteRepository.Listar());
             }
             catch (Exception)
             {
@@ -44,7 +46,8 @@ namespace AppApi.Crontroller
         [HttpPut("{Id}")]
         public IActionResult Editar(string Id, [FromBody] Cliente Cliente)
         {
-            try {
+            try
+            {
                 Cliente.Id = Id;
                 if (_clienteRepository.Obter(Cliente.Id) == null)
                 {

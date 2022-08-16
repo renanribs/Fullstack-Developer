@@ -9,5 +9,6 @@ namespace AppApi.Interfaces
         public Task<List<Cliente>> Listar();
         public Task<Cliente> Obter(string Id);
 
+
     }
 }

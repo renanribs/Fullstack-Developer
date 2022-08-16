@@ -41,7 +41,7 @@ namespace AppApi.Repository
             return (await conn.QueryAsync<Cliente>(sql)).ToList();
         }
 
-        public async Task<Cliente?> Obter(string Id)
+        public async Task<Cliente> Obter(string Id)
         {
             var sql = "SELECT * FROM Cliente WHERE ID = @Id";
             using var conn = await GetDbConnection();

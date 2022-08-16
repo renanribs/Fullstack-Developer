@@ -11,6 +11,7 @@ C:\TesteMaxima\TesteMaxima\Entities\obj\Debug\net6.0\refint\Entities.dll
 C:\TesteMaxima\TesteMaxima\Entities\obj\Debug\net6.0\Entities.pdb
 C:\TesteMaxima\TesteMaxima\Entities\obj\Debug\net6.0\ref\Entities.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\bin\Debug\net6.0\Entities.deps.json
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\bin\Debug\net6.0\Entities.runtimeconfig.json
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\bin\Debug\net6.0\Entities.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\bin\Debug\net6.0\Entities.pdb
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\obj\Debug\net6.0\Entities.csproj.AssemblyReference.cache
@@ -21,6 +22,5 @@ C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\obj\Debug\net6.0
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\obj\Debug\net6.0\Entities.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\obj\Debug\net6.0\refint\Entities.dll
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\obj\Debug\net6.0\Entities.pdb
-C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\obj\Debug\net6.0\ref\Entities.dll
-C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\bin\Debug\net6.0\Entities.runtimeconfig.json
 C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\obj\Debug\net6.0\Entities.genruntimeconfig.cache
+C:\TesteMaxima\Fullstack-Developer\Fullstack-Developer\Entities\obj\Debug\net6.0\ref\Entities.dll

@@ -16,7 +16,7 @@ namespace AppApi.Repository
             this.clienteRepository = clienteRepository;
         }
 
-        public async Task Incluir(Pedido Pedido)
+        public async Task Inserir(Pedido Pedido)
         {
             if (string.IsNullOrEmpty(Pedido.Id))
             {
@@ -25,13 +25,13 @@ namespace AppApi.Repository
 
             using (var conn = await GetDbConnection())
             {
-                var sql = "INSERT INTO Pedido (ID, DATA, FRETE, CLIENTEID) VALUES (@Id, @Data, @Frete, @ClienteId)";
+                var sql = "INSERT INTO Pedido (ID,FRETE, CLIENTEID) VALUES (@Id, @Frete, @ClienteId)";
                 await conn.ExecuteAsync(sql, new { Pedido.Id, Pedido.Frete, ClienteId = Pedido.Cliente.Id });
             }
 
             foreach (var produto in Pedido.Produtos)
             {
-                await produtoRepository.IserirProdutoNoPedido(produto.Id, Pedido.Id, produto.QntItem);
+                await produtoRepository.InserirProdutoNoPedido(produto.Id, Pedido.Id, produto.QntItem);
             }
         }
 
@@ -41,13 +41,13 @@ namespace AppApi.Repository
 
             using (var conn = await GetDbConnection())
             {
-                var sql = "UPDATE Pedido SET DATA = @Data, FRETE = @Frete, CLIENTEID = @ClienteId WHERE ID = @Id";
+                var sql = "UPDATE Pedido SET FRETE = @Frete, CLIENTEID = @ClienteId WHERE ID = @Id";
                 await conn.ExecuteAsync(sql, new { Pedido.Id, Pedido.Frete, ClienteId = Pedido.Cliente.Id });
             }
 
             foreach (var produto in Pedido.Produtos)
             {
-                await produtoRepository.IserirProdutoNoPedido(produto.Id, Pedido.Id, produto.QntItem);
+                await produtoRepository.InserirProdutoNoPedido(produto.Id, Pedido.Id, produto.QntItem);
             }
         }
 

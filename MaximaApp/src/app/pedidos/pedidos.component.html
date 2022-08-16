@@ -1,25 +1,37 @@
-<form class="from-inline">
-  <h3>Consulta pedido</h3>
-  <div class="form-group mb-2"></div>
-</form>
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-  <table class="table table-striped">
-    <thead class="thead-ligth">
-      <h4>Pedidos</h4>
-      <tr>
-        <th>#</th>
-        <th>Valor total</th>
-        <th>Quant. de itens</th>
-        <th>Valor do frete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr></tr>
-    </tbody>
-    <footer>
-      <tr>
-        <td colspan="7" class="text-center"></td>
-      </tr>
-    </footer>
-  </table>
+<div class="container-fluid" style="padding: 3em">
+  <label>
+    <h3>Consulta pedido</h3>
+  </label>
+  <div
+    class="container-fluid card-body"
+    style="background: #fff; border-radius: 8px"
+  >
+    <h5 style="width: 95%; margin: 0.7em auto">Pedidos</h5>
+    <table
+      mat-table
+      [dataSource]="pedidos"
+      style="width: 100%; margin-bottom: 1.5em"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td *matCellDef="let ped">{{ ped.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Valor Total</th>
+        <td *matCellDef="let ped">R$ {{ getTotal(ped) | number: "1.2" }}</td>
+      </ng-container>
+      <ng-container matColumnDef="num">
+        <th mat-header-cell *matHeaderCellDef>Quant. de Itens</th>
+        <td *matCellDef="let ped">{{ ped.produtos.length }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="frete">
+        <th mat-header-cell *matHeaderCellDef>Valor do frete</th>
+        <td *matCellDef="let ped">R$ {{ ped.frete | number: "1.2" }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
 </div>

@@ -9,7 +9,7 @@ namespace AppApi.Interfaces
         public Task<List<Produto>> Listar();
         public Task<Produto?> Obter(string Id);
         public Task<List<Produto>> ObterPorPedido(string PedidoId);
-        public Task IserirProdutoNoPedido(string ProdutoId, string PedidoId, double Quantidade);
+        public Task InserirProdutoNoPedido(string ProdutoId, string PedidoId, double QntItem);
         public Task ExcluirProdutoDoPedido(string PedidoId);
     }
 }

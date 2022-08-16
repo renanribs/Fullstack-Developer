@@ -4,15 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AppApi.Crontroller
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class PedidoController : ControllerBase
     {
-        private IPedidoRepository _pedidoRepository;
+        private IPedidoRepository pedidoRepository;
 
         public PedidoController(IPedidoRepository pedidoRepository)
         {
-            this._pedidoRepository = pedidoRepository;
+            this.pedidoRepository = pedidoRepository;
         }
 
         [HttpGet]
@@ -20,7 +21,7 @@ namespace AppApi.Crontroller
         {
             try
             {
-                return Ok(await _pedidoRepository.Listar());
+                return Ok(await pedidoRepository.Listar());
             }
             catch (Exception)
             {
@@ -33,7 +34,7 @@ namespace AppApi.Crontroller
         {
             try
             {
-                await _pedidoRepository.Incluir(Pedido);
+                await pedidoRepository.Inserir(Pedido);
                 return Created(Pedido.Id, Pedido);
             }
             catch (Exception)
@@ -48,11 +49,11 @@ namespace AppApi.Crontroller
             try
             {
                 Pedido.Id = Id;
-                if (_pedidoRepository.Obter(Pedido.Id) == null)
+                if (pedidoRepository.Obter(Pedido.Id) == null)
                 {
                     return NotFound();
                 }
-                _pedidoRepository.Editar(Pedido);
+                pedidoRepository.Editar(Pedido);
                 return Created(Pedido.Id, Pedido);
             }
             catch (Exception)
@@ -68,11 +69,11 @@ namespace AppApi.Crontroller
             try
             {
                 Pedido.Id = Id;
-                if (_pedidoRepository.Obter(Id) == null)
+                if (pedidoRepository.Obter(Id) == null)
                 {
                     return NotFound();
                 }
-                _pedidoRepository.Excluir(Pedido);
+                pedidoRepository.Excluir(Pedido);
                 return Ok();
             }
             catch (Exception)

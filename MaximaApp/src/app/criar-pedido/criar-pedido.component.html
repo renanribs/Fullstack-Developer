@@ -10,21 +10,16 @@
   </h4>
   <div class="form-inline">
     <div class="pesquisa">
-      <input
-        type="search"
-        size="80"
-        class="form-control ds-input"
-        id="cliente"
-        placeholder="Informe um cliente*"
-        data-docs-version="4.1"
-        spellcheck="false"
+      <ng-select
+        class="form-control form-control-sm"
+        [items]="clientes"
+        bindLabel="nome"
         role="combobox"
-        aria-autocomplete="list"
-        aria-expanded="false"
-        aria-owns="algolia-autocomplete-listbox-0"
-        dir="auto"
-        style="position: relative; vertical-align: top"
-      />
+        [clearable]="true"
+        placeholder="Selecione um cliente"
+        [(ngModel)]="pedido.cliente"
+      >
+      </ng-select>
     </div>
   </div>
 </div>
@@ -41,29 +36,85 @@
     </h4>
   </div>
   <div class="form-inline">
-    <div class="form-group mb-3">
-      <input
-        type="search"
-        size="70"
-        class="form-control ds-input"
-        id="produto"
-        placeholder="Informe um produto"
-      />
+    <div class="form-group">
+      <ng-select
+        class="form-control form-control-sm"
+        [items]="produtos"
+        (change)="adicionarProduto()"
+        bindLabel="nome"
+        [clearable]="false"
+        placeholder="Selecione um produto"
+        [(ngModel)]="produtoAtual"
+      >
+      </ng-select>
     </div>
   </div>
   <br />
-  <h3 style="text-align: center; color: rgba(126, 126, 126, 0.644)">
+  <div *ngFor="let produto of pedido.produtos">
+    <div class="row">
+      <div class="col-md-6 text-left row">
+        <div class="col-4">
+          <img
+            src="{{ produto.imagemUrl }}"
+            width="80px"
+            height="80px"
+            style="margin: 0 auto"
+          />
+        </div>
+        <div class="col-8 row">
+          <p class="col-12 text-left"><b></b> {{ produto.codigo }}</p>
+          <p class="col-12 text-left">
+            {{ produto.nome }}
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 text-right row">
+        <div class="col-md-11 row">
+          <input
+            type="number"
+            min="0"
+            (change)="onProdutoQuantidadeChanged($event, produto)"
+            value="{{ produto.quantidade }}"
+            class="form-control col-sm-1"
+          />
+          <div class="col-md-2 text-center">
+            X R$ {{ produto.precoUnitario | number: "1.2-2" }}
+          </div>
+          <div class="col-md-2 text-center offset-10">
+            <b
+              >R$
+              {{
+                produto.precoUnitario * produto.quantidade | number: "1.2-2"
+              }}</b
+            >
+          </div>
+        </div>
+        <div class="col-1">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+            (click)="onProdutoRemoved(produto)"
+          >
+            <span aria-hidden="true">x</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+
+  <div *ngIf="pedido.produtos.length == 0" style="margin-top: 3em">
     <img
-      src="../../assets/imagem-carrinho-empty-state.png"
-      alt="Carrinho"
-      [style.width.PX]="180"
-      [style.height.PX]="180"
+      class="rounded mx-auto d-block"
+      width="150px"
+      height="150px"
+      src="/assets/imagem-carrinho-empty-state.png"
     />
-    <br />Carrinho vazio
-  </h3>
-  <h5 style="text-align: center; color: rgba(107, 107, 107, 0.644)">
-    Nenhum produto foi inserido
-  </h5>
+    <br />
+    <p class="text-center">Nenhum produto foi inserido</p>
+  </div>
 </div>
 <div p-3 bg-white rounded shadow-sm>
   <div class="card shadow-lg">
@@ -77,22 +128,33 @@
         />
         Total
       </h4>
-      <div class="col-6">
-        <label class="col-6 text-left">Itens </label>
-        <label class="col-6 text-right">R$ 0,00</label>
-        <label class="col-6 text-left">Frete </label>
-        <label class="col-6 text-right">R$ 0,00</label>
+      <div class="col-md-6">
+        <label class="col-md-6 text-left">Itens </label>
+        <label class="col-md-6 text-right"
+          >R$ {{ getTotalProdutos() | number: "1.2-2" }}</label
+        >
+        <label class="col-md-6 text-left">Frete </label>
+        <label class="col-md-6 text-right"
+          >R$ {{ pedido.frete | number: "1.2-2" }}</label
+        >
         <hr class="hr" />
-        <label class="col-6 text-left">Total</label>
-        <label class="col-6 text-right">R$ 0,00</label>
+        <label class="col-md-6 text-left">Total</label>
+        <label class="col-md-6 text-right"
+          >R$ {{ getTotalPedido() | number: "1.2-2" }}</label
+        >
       </div>
-      <div class="col-6">
-        <button type="button" class="btn btn-success col-12">
+      <div class="col-md-6">
+        <button
+          (click)="onSalvarPedido()"
+          type="button"
+          class="btn btn-success col-md-10"
+        >
           Finalizar Pedido
         </button>
         <button
+          (click)="onLimparCarrinho()"
           type="button"
-          class="btn btn-outline-secondary col-12"
+          class="btn btn-danger col-md-10"
           style="margin-top: 1em"
         >
           Limpar carrinho
