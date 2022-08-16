@@ -17,7 +17,6 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
     this.api.getPedidos().subscribe(
       (ped) => {
-        console.log(ped);
         this.pedidos = ped;
       },
       (_) => {
