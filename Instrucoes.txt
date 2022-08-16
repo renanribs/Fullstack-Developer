@@ -1,0 +1,45 @@
+ 1 - Rodar o script a baixo para criar o banco de dados no postgres
+
+CREATE DATABASE testemaxima
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+	
+CREATE TABLE Produto (
+ID TEXT PRIMARY KEY,
+CODIGO TEXT NOT NULL,
+NOME TEXT NOT NULL,
+PRECOUNITARIO NUMERIC NOT NULL,
+IMAGEMURL TEXT);
+
+CREATE TABLE Cliente (
+ID TEXT PRIMARY KEY,
+CODIGO TEXT NOT NULL,
+NOME TEXT NOT NULL
+);
+
+CREATE TABLE Pedido (
+ID TEXT PRIMARY KEY,
+FRETE NUMERIC NOT NULL,
+CLIENTEID TEXT NOT NULL,
+CONSTRAINT FK_PEDIDO_CLIENTE FOREIGN KEY (CLIENTEID) REFERENCES CLIENTE (ID)
+);
+
+CREATE TABLE PedidoItens (
+PEDIDOID TEXT NOT NULL,
+PRODUTOID TEXT NOT NULL,
+QUANTIDADE NUMERIC NOT NULL,
+CONSTRAINT PK_PEDIDOITENS PRIMARY KEY (PEDIDOID, PRODUTOID),
+CONSTRAINT FK_PEDIDOITENS_PRODUTO FOREIGN KEY (PRODUTOID) REFERENCES PRODUTO (ID) ON DELETE CASCADE,
+CONSTRAINT FK_PEDIDOITENS_PEDIDO FOREIGN KEY (PEDIDOID) REFERENCES PEDIDO (ID) ON DELETE CASCADE
+);
+
+ 2 - Verificar se as credenciais em ConnectionString em appsettings.json corresponde com o ambiente de teste.
+
+ 3 - Abrir pasta FreteApi e rodar o comando "dotnet run" no CMD
+ 4 - Abrir pasta AppApi e rodar o comando "dotnet run" no CMD
+ 5 - Abrir MaximaApp e rodar "npm install" no CMD, após finalizada a instalação executar "ng serve"
