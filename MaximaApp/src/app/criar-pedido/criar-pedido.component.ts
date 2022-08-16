@@ -33,7 +33,7 @@ export class CriarPedidoComponent implements OnInit {
   }
 
   adicionarProduto() {
-    this.produtoAtual.quantidade = 1;
+    this.produtoAtual.qntItem = 1;
     this.pedido.produtos.push(this.produtoAtual);
     this.onPedidoChanged();
   }
@@ -72,7 +72,7 @@ export class CriarPedidoComponent implements OnInit {
   }
 
   onProdutoQuantidadeChanged(ev: any, produto: Produto) {
-    produto.quantidade = parseInt(ev.target.value);
+    produto.qntItem = parseInt(ev.target.value);
     this.onPedidoChanged();
   }
 
@@ -86,7 +86,7 @@ export class CriarPedidoComponent implements OnInit {
   getTotalProdutos() {
     if (this.pedido.produtos.length > 0) {
       return this.pedido.produtos
-        .map((p) => p.quantidade * p.precoUnitario)
+        .map((p) => p.qntItem * p.precoUnitario)
         .reduce((prev, cur) => prev + cur);
     } else {
       return 0;
@@ -97,8 +97,8 @@ export class CriarPedidoComponent implements OnInit {
     return this.getTotalProdutos() + this.pedido.frete;
   }
 
-  onSalvarPedido() {
-    this.api.salvarPedido(this.pedido).subscribe(
+  onFinalizarPedido() {
+    this.api.finalizarPedido(this.pedido).subscribe(
       (_) => {
         this.toast.success('Pedido salvo com sucesso');
         this.router.navigateByUrl('/pedidos');

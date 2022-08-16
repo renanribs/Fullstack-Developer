@@ -23,7 +23,7 @@ export class BackendApi {
     return this.http.get<Pedido[]>(URL + '/Pedido');
   }
 
-  salvarPedido(pedido: Pedido) {
+  finalizarPedido(pedido: Pedido) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     return this.http.post(URL + '/Pedido', JSON.stringify(pedido), {

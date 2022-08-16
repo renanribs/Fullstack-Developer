@@ -16,16 +16,16 @@ namespace AppApi.Repository
 
         public async Task Inserir(Cliente Cliente)
         {
-            var sql = "INSERT INTO Cliente (ID, CODIGO, NOME) VALUES (@Id, @Codigo, @Nome)";
+            var db = "INSERT INTO Cliente (ID, CODIGO, NOME) VALUES (@Id, @Codigo, @Nome)";
             using var conn = await GetDbConnection();
-            await conn.ExecuteAsync(sql, Cliente);
+            await conn.ExecuteAsync(db, Cliente);
         }
 
         public async Task Editar(Cliente Cliente)
         {
-            var sql = "UPDATE Cliente SET CODIGO = @Codigo, NOME = @Nome WHERE ID = @Id";
+            var db = "UPDATE Cliente SET CODIGO = @Codigo, NOME = @Nome WHERE ID = @Id";
             using var conn = await GetDbConnection();
-            await conn.ExecuteAsync(sql, Cliente);
+            await conn.ExecuteAsync(db, Cliente);
         }
 
         public async Task Excluir(Cliente Cliente)
@@ -36,16 +36,16 @@ namespace AppApi.Repository
 
         public async Task<List<Cliente>> Listar()
         {
-            var sql = "SELECT * FROM Cliente";
+            var db = "SELECT * FROM Cliente";
             using var conn = await GetDbConnection();
-            return (await conn.QueryAsync<Cliente>(sql)).ToList();
+            return (await conn.QueryAsync<Cliente>(db)).ToList();
         }
 
         public async Task<Cliente> Obter(string Id)
         {
-            var sql = "SELECT * FROM Cliente WHERE ID = @Id";
+            var db = "SELECT * FROM Cliente WHERE ID = @Id";
             using var conn = await GetDbConnection();
-            return await conn.QueryFirstAsync<Cliente>(sql, new { Id });
+            return await conn.QueryFirstAsync<Cliente>(db, new { Id });
         }
     }
 }

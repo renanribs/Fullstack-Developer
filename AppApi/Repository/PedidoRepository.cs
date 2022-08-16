@@ -25,8 +25,8 @@ namespace AppApi.Repository
 
             using (var conn = await GetDbConnection())
             {
-                var sql = "INSERT INTO Pedido (ID,FRETE, CLIENTEID) VALUES (@Id, @Frete, @ClienteId)";
-                await conn.ExecuteAsync(sql, new { Pedido.Id, Pedido.Frete, ClienteId = Pedido.Cliente.Id });
+                var db = "INSERT INTO Pedido (ID,FRETE, CLIENTEID) VALUES (@Id, @Frete, @ClienteId)";
+                await conn.ExecuteAsync(db, new { Pedido.Id, Pedido.Frete, ClienteId = Pedido.Cliente.Id });
             }
 
             foreach (var produto in Pedido.Produtos)
@@ -41,8 +41,8 @@ namespace AppApi.Repository
 
             using (var conn = await GetDbConnection())
             {
-                var sql = "UPDATE Pedido SET FRETE = @Frete, CLIENTEID = @ClienteId WHERE ID = @Id";
-                await conn.ExecuteAsync(sql, new { Pedido.Id, Pedido.Frete, ClienteId = Pedido.Cliente.Id });
+                var db = "UPDATE Pedido SET FRETE = @Frete, CLIENTEID = @ClienteId WHERE ID = @Id";
+                await conn.ExecuteAsync(db, new { Pedido.Id, Pedido.Frete, ClienteId = Pedido.Cliente.Id });
             }
 
             foreach (var produto in Pedido.Produtos)
@@ -59,9 +59,9 @@ namespace AppApi.Repository
 
         public async Task<List<Pedido>> Listar()
         {
-            var sql = "SELECT * FROM Pedido";
+            var db = "SELECT * FROM Pedido";
             using var conn = await GetDbConnection();
-            var pedidos = (await conn.QueryAsync<Pedido>(sql)).ToList();
+            var pedidos = (await conn.QueryAsync<Pedido>(db)).ToList();
 
             foreach (var pedido in pedidos)
             {
@@ -75,9 +75,9 @@ namespace AppApi.Repository
 
         public async Task<Pedido?> Obter(string Id)
         {
-            var sql = "SELECT * FROM Pedido WHERE ID = @Id";
+            var db = "SELECT * FROM Pedido WHERE ID = @Id";
             using var conn = await GetDbConnection();
-            return await conn.QueryFirstAsync<Pedido>(sql, new { Id });
+            return await conn.QueryFirstAsync<Pedido>(db, new { Id });
         }
     }
 }

@@ -16,9 +16,9 @@ export class PedidosComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getPedidos().subscribe(
-      (peds) => {
-        console.log(peds);
-        this.pedidos = peds;
+      (ped) => {
+        console.log(ped);
+        this.pedidos = ped;
       },
       (_) => {
         this.toast.error('Erro');
@@ -28,7 +28,7 @@ export class PedidosComponent implements OnInit {
 
   getTotal(pedido: Pedido): number {
     return pedido.produtos
-      .map((v) => v.precoUnitario * v.quantidade)
+      .map((v) => v.precoUnitario * v.qntItem)
       .reduce((prev, curr) => prev + curr);
   }
 }
